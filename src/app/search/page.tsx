@@ -25,19 +25,25 @@ export default async function Search({ searchParams }: PageProps) {
 }
 
 async function SearchResults({ searchParams }: { searchParams: Promise<SearchParams> }) {
-    'use cache'
     const { q: query } = searchParamsCache.parse(await searchParams)
 
     if (!query) {
         return <div>Enter a search query to see results.</div>
     }
 
-    const data = await fetchTMDBData(`/search/movie?query=${encodeURIComponent(query)}`)
-
     return (
         <div>
             <h2>Search Results for "{query}"</h2>
-            <MovieList title={`Search results for "${query}"`} movies={data.results} />
+            <Suspense fallback={<div>Loading movie results...</div>}>
+                <MovieSearchResults query={query} />
+            </Suspense>
         </div>
     )
+}
+
+async function MovieSearchResults({ query }: { query: string }) {
+    'use cache'
+    const data = await fetchTMDBData(`/search/movie?query=${encodeURIComponent(query)}`)
+
+    return <MovieList title={`Search results for "${query}"`} movies={data.results} />
 }
