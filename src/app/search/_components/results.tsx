@@ -1,11 +1,12 @@
 import { searchParamsCache } from '@/config/searchParams'
 import { fetchTMDBData } from '@/lib/tmdb'
 import MovieList from '@/components/MovieList'
-import type { SearchParams } from 'nuqs/server'
 
 
-export default async function Results({ searchParams }: { searchParams: Promise<SearchParams> }) {
-    const { q: query } = searchParamsCache.parse(await searchParams)
+
+export default async function Results() {
+
+    const query = searchParamsCache.get('q')
     const data = await fetchTMDBData(`/search/movie?query=${query}`)
 
     return (<div>
