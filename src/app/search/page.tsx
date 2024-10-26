@@ -21,7 +21,10 @@ export default async function Search({ searchParams }: PageProps) {
             </Suspense>
 
             <h1>Search Results for {query}</h1>
-            <Results />
+
+            <Suspense fallback={<div>Loading...</div>}>
+                <Results />
+            </Suspense>
         </div>
     )
 }
