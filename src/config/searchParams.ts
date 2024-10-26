@@ -7,6 +7,6 @@ import {
 
 export const searchParamsCache = createSearchParamsCache({
 	// List your search param keys and associated parsers here:
-	q: parseAsString.withDefault(""),
+	q: parseAsString,
 	maxResults: parseAsInteger.withDefault(10),
 });
