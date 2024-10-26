@@ -4,9 +4,8 @@ import MovieList from '@/components/MovieList'
 
 
 
-export default async function Results() {
+export default async function Results({ query }: { query: string }) {
 
-    const query = searchParamsCache.get('q')
     const data = await fetchTMDBData(`/search/movie?query=${query}`)
 
     return (<div>

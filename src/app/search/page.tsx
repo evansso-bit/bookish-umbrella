@@ -12,12 +12,8 @@ export default function Search({ searchParams }: PageProps) {
     return (
         <div>
             <h1>Search</h1>
-            <Suspense>
-                <SearchForm />
-            </Suspense>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Results />
-            </Suspense>
+            <SearchForm />
+
         </div>
     )
 }
