@@ -11,6 +11,7 @@
   "dependencies": {
     "eslint-config-next": "^15.0.0-rc.1",
     "next": "^15.0.2-canary.6",
+    "nuqs": "^2.0.4",
     "react": "^19.0.0-rc-cae764ce-20241025",
     "react-dom": "^19.0.0-rc-cae764ce-20241025"
   },
